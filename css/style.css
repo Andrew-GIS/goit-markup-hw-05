@@ -56,6 +56,7 @@ img {
   --soc-link-background: rgba(255, 255, 255, 0.1);
   --portfolio-hover-background: rgba(33, 150, 243, 0.9);
   --transition-hover: cubic-bezier(0.4, 0, 0.2, 1);
+  --backdrop-background: rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -91,16 +92,6 @@ body {
 /*--Logo styles-------------------------------------*/
 .header {
   border-bottom: 1px solid var(--border-header-color);
-  /*--fixed--*/
-  /* position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0; */
-  /*--absolute--*/
-  /* position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0%; */
 }
 
 .header .conteiner {
@@ -154,6 +145,7 @@ body {
   border-radius: 2px;
   left: 0%;
   bottom: 0%;
+  margin-bottom: -1px;
 }
 
 .navigation-links-item:last-child,
@@ -281,9 +273,13 @@ body {
   margin-right: 30px;
 }
 
+.features-item:last-child {
+  margin-right: 0px;
+}
+
 .features-item::before {
   display: block;
-  content: "";
+
   height: 120px;
   width: inherit;
   background-color: #f5f4fa;
@@ -296,18 +292,22 @@ body {
 }
 
 .icon-antenna::before {
+  content: "";
   background-image: url("../images/studio_image/antenna.svg");
 }
 
 .icon-clock::before {
+  content: "";
   background-image: url("../images/studio_image/clock.svg");
 }
 
 .icon-diagram::before {
+  content: "";
   background-image: url("../images/studio_image/diagram.svg");
 }
 
 .icon-astronaut::before {
+  content: "";
   background-image: url("../images/studio_image/astronaut.svg");
 }
 
@@ -343,10 +343,36 @@ body {
 .what-we-do-item {
   list-style-type: none;
   margin-right: 30px;
+  position: relative;
+  z-index: 0;
 }
 
 .what-we-do-item:last-child {
   margin-right: 0px;
+}
+
+.description-container {
+  position: absolute;
+  z-index: 1;
+  bottom: 0%;
+  width: 100%;
+  background: rgba(47, 48, 58, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 27px 0px;
+  overflow: hidden;
+  max-height: 70px;
+}
+
+.what-we-do-description {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--main-light-color);
+  /* flex-wrap: nowrap; */
 }
 
 .what-we-do-title {
@@ -592,6 +618,7 @@ body {
   top: 0%;
   left: 0%;
   height: 100%;
+  width: 100%;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.56;
@@ -736,4 +763,60 @@ body {
 .soc-link-item-footer:hover,
 .soc-link-item-footer:focus {
   background: var(--accent-color);
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--backdrop-background);
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  transition: opacity 300ms var(--transition-hover),
+    visibility 300ms var(--transition-hover);
+}
+
+.backdrop.is-hidden .modal {
+  transform: scale(0.1) rotate(30deg);
+}
+
+.modal {
+  width: 528px;
+  min-height: 581px;
+  background-color: var(--main-light-color);
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(1) rotate(0) translate(-50%, -50%);
+  transition: transform 250ms var(--transition-hover);
+}
+
+.modal-close {
+  position: absolute;
+  padding: 0%;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  background: var(--main-light-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: fill 250ms var(--transition-hover);
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  fill: var(--accent-color);
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
