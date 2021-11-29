@@ -56,6 +56,7 @@ img {
   --soc-link-background: rgba(255, 255, 255, 0.1);
   --portfolio-hover-background: rgba(33, 150, 243, 0.9);
   --transition-hover: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration: 250ms;
   --backdrop-background: rgba(0, 0, 0, 0.2);
 }
 
@@ -143,9 +144,8 @@ body {
   background-color: var(--accent-color);
   position: absolute;
   border-radius: 2px;
-  left: 0%;
-  bottom: 0%;
-  margin-bottom: -1px;
+  left: 0;
+  bottom: -1px;
 }
 
 .navigation-links-item:last-child,
@@ -158,7 +158,7 @@ body {
   color: inherit;
   text-decoration: none;
   display: block;
-  transition: color 250ms var(--transition-hover);
+  transition: color var(--transition-duration) var(--transition-hover);
 }
 
 .contact-list {
@@ -178,14 +178,14 @@ body {
   fill: var(--middle-main-color);
   margin-right: 10px;
   justify-content: center;
-  transition: fill 250ms var(--transition-hover);
+  transition: fill var(--transition-duration) var(--transition-hover);
 }
 
 .icon-phone {
   fill: var(--middle-main-color);
   margin-right: 10px;
   justify-content: center;
-  transition: fill 250ms var(--transition-hover);
+  transition: fill var(--transition-duration) var(--transition-hover);
 }
 
 .nav-contact-reference {
@@ -194,7 +194,7 @@ body {
   text-decoration: none;
   display: flex;
   align-items: center;
-  transition: color 250ms var(--transition-hover);
+  transition: color var(--transition-duration) var(--transition-hover);
 }
 
 .nav-link-reference:hover,
@@ -360,9 +360,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 27px 0px;
   overflow: hidden;
-  max-height: 70px;
+  min-height: 70px;
 }
 
 .what-we-do-description {
@@ -370,9 +369,9 @@ body {
   font-size: 14px;
   line-height: 1.14;
   text-align: center;
+  justify-content: center;
   text-transform: uppercase;
   color: var(--main-light-color);
-  /* flex-wrap: nowrap; */
 }
 
 .what-we-do-title {
@@ -439,6 +438,7 @@ body {
   display: flex;
   flex-direction: row;
   width: 206px;
+  align-items: center;
   justify-content: center;
 }
 
@@ -459,14 +459,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 250ms var(--transition-hover);
+  color: var(--client-light-color);
+  transition: background-color var(--transition-duration)
+      var(--transition-hover),
+    fill var(--transition-duration) var(--transition-hover);
 }
 
 .member-link-item {
   width: 20px;
   height: 20px;
-  fill: var(--client-light-color);
-  transition: fill 250ms var(--transition-hover);
+  fill: currentColor;
 }
 
 .member-social-link:hover,
@@ -498,13 +500,6 @@ body {
 .client-item {
   width: 170px;
   height: 92px;
-  border: 1px solid var(--client-light-color);
-  box-sizing: border-box;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 250ms var(--transition-hover);
 }
 
 .client-item:not(:nth-child(3n + 6)) {
@@ -512,23 +507,27 @@ body {
 }
 
 .client-link {
+  border: 1px solid var(--client-light-color);
+  box-sizing: border-box;
+  border-radius: 4px;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  color: var(--client-light-color);
+  transition: border-color var(--transition-duration) var(--transition-hover);
 }
 
 .client-item-logo {
-  max-width: 106px;
-  max-height: 60px;
-  fill: var(--client-light-color);
-  transition: fill 250ms var(--transition-hover);
+  width: 106px;
+  height: 60px;
+  fill: currentColor;
+  transition: fill var(--transition-duration) var(--transition-hover);
 }
 
-.client-item:hover,
-.client-item:focus {
+.client-link:hover,
+.client-link:focus {
   border-color: var(--accent-color);
 }
 
@@ -570,9 +569,9 @@ body {
   border-radius: 4px;
   border: 0;
 
-  transition: background 250ms var(--transition-hover),
-    color 250ms var(--transition-hover),
-    box-shadow 250ms var(--transition-hover);
+  transition: background var(--transition-duration) var(--transition-hover),
+    color var(--transition-duration) var(--transition-hover),
+    box-shadow var(--transition-duration) var(--transition-hover);
 }
 
 .portfolio-btn:hover,
@@ -606,7 +605,7 @@ body {
   height: 100%;
   color: inherit;
   text-decoration: none;
-  transition: box-shadow 250ms var(--transition-hover);
+  transition: box-shadow var(--transition-duration) var(--transition-hover);
 }
 .portfolio-item-wrap {
   position: relative;
@@ -625,7 +624,7 @@ body {
   padding: 63px 24px;
   color: var(--main-light-color);
   background-color: var(--portfolio-hover-background);
-  transform: translateY(100%);
+  transform: translateY(101%);
   transition: transform 250ms;
   overflow: auto;
 }
@@ -694,6 +693,7 @@ body {
   line-height: 1.71;
   list-style-type: none;
   color: var(--footer-address-color);
+  transition: color var(--transition-duration) var(--transition-hover);
 }
 
 .address-item:last-child {
@@ -714,10 +714,14 @@ body {
 .actual-address {
   color: var(--main-light-color);
   text-decoration: none;
+  transition: color var(--transition-duration) var(--transition-hover);
 }
 
-.social_footer {
-  margin-top: 12px;
+.footer-contact-reference:hover,
+.footer-contact-reference:focus,
+.actual-address:hover,
+.actual-address:focus {
+  color: var(--accent-color);
 }
 
 .social-title {
@@ -747,7 +751,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 250ms var(--transition-hover);
+  transition: background var(--transition-duration) var(--transition-hover);
 }
 
 .link-logo-footer {
@@ -789,7 +793,7 @@ body {
   top: 50%;
   left: 50%;
   transform: scale(1) rotate(0) translate(-50%, -50%);
-  transition: transform 250ms var(--transition-hover);
+  transition: transform var(--transition-duration) var(--transition-hover);
 }
 
 .modal-close {
@@ -807,7 +811,7 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: fill 250ms var(--transition-hover);
+  transition: fill var(--transition-duration) var(--transition-hover);
 }
 
 .modal-close:hover,
