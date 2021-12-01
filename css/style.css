@@ -460,15 +460,18 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--client-light-color);
-  transition: background-color var(--transition-duration)
-      var(--transition-hover),
-    fill var(--transition-duration) var(--transition-hover);
+  transition-property: background-color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-hover);
 }
 
 .member-link-item {
   width: 20px;
   height: 20px;
   fill: currentColor;
+  transition-property: fill;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-hover);
 }
 
 .member-social-link:hover,
@@ -516,14 +519,18 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--client-light-color);
-  transition: border-color var(--transition-duration) var(--transition-hover);
+  transition-property: border-color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-hover);
 }
 
 .client-item-logo {
   width: 106px;
   height: 60px;
   fill: currentColor;
-  transition: fill var(--transition-duration) var(--transition-hover);
+  transition-property: fill;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-hover);
 }
 
 .client-link:hover,
